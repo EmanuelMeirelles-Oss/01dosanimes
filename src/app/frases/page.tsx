@@ -68,6 +68,51 @@ const frases = [
     cor: "#ef4444",
     imagemBackground: "/wal_luffy.png",
     categoria: "Outros animes"
+  },
+  {
+    id: 8,
+    texto: "A única coisa que nos é permitido fazer é acreditar que não vamos nos arrepender da escolha que fizemos.",
+    personagem: "Levi Ackerman",
+    serie: "Attack on Titan",
+    cor: "#10b981", 
+    imagemBackground: "/wal_levi.png",
+    categoria: "Outros animes"
+  },
+  {
+    id: 9,
+    texto: "Se você ganhar, você vive. Se você perder, você morre. Se você não lutar, você não pode ganhar.",
+    personagem: "Eren Yeager",
+    serie: "Attack on Titan",
+    cor: "#22c55e",
+    imagemBackground: "/wal_eren.png",
+    categoria: "Outros animes"
+  },
+  {
+    id: 10,
+    texto: "Não existe lição sem dor. Pois não se pode ganhar algo sem sacrificar algo em troca.",
+    personagem: "Edward Elric",
+    serie: "Fullmetal Alchemist",
+    cor: "#3b82f6",
+    imagemBackground: "/wal_edward.png",
+    categoria: "Outros animes"
+  },
+  {
+    id: 11,
+    texto: "O poder de um homem não deve ser julgado pelas suas amizades, mas por aqueles que ele considera seus inimigos.",
+    personagem: "Roy Mustang",
+    serie: "Fullmetal Alchemist",
+    cor: "#ef4444",
+    imagemBackground: "/wal_mustang.png",
+    categoria: "Outros animes"
+  },
+  {
+    id: 12,
+    texto: "Eu sou apenas um cara que é um herói por diversão.",
+    personagem: "Saitama",
+    serie: "One Punch Man",
+    cor: "#f59e0b",
+    imagemBackground: "/wal_saitama.png",
+    categoria: "Outros animes"
   }
 ]
 
