@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 // Aqui vai a lógica completa que executaria a cada 6 horas.
 // Como não temos as chaves do Supabase e as APIs aqui implementadas perfeitamente pro backend, farei o esqueleto estrutural completo.
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const results = {
       redditPuxados: 0,
@@ -66,11 +66,12 @@ export async function GET(request: Request) {
       message: 'Cron job executado com sucesso.',
       stats: results
     })
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erro no cron:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Erro interno no servidor'
     return NextResponse.json({
       success: false,
-      message: error.message || 'Erro interno no servidor'
+      message: errorMessage
     }, { status: 500 })
   }
 }
