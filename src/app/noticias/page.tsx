@@ -6,20 +6,20 @@ import { ExternalLink, Clock, Flame } from 'lucide-react'
 
 const mockNoticias = [
   // Dragon Ball
-  { id: '1', titulo: 'Sparking Zero rompe barreiras: Nova engine traz lutas destrutivas', url: '#', imagem: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop', fonte: 'AnimeNews', categoria: 'dragonball', criado_em: new Date().toISOString() },
-  { id: '2', titulo: 'Mangá de Dragon Ball Super revela nova transformação de Gohan', url: '#', imagem: 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1920&auto=format&fit=crop', fonte: 'Reddit', categoria: 'dragonball', criado_em: new Date().toISOString() },
-  { id: '3', titulo: 'O legado de Akira Toriyama: Entrevista inédita', url: '#', imagem: null, fonte: 'NewsAPI', categoria: 'dragonball', criado_em: new Date().toISOString() },
-  { id: '7', titulo: 'Possível teaser da nova saga ganha data oficial', url: '#', imagem: 'https://placehold.co/600x400/1a1a1a/f59e0b?text=Nova+Saga', fonte: 'Reddit', categoria: 'dragonball', criado_em: new Date().toISOString() },
-  { id: '8', titulo: 'Comunidade reage a novo jogo Mobile da franquia', url: '#', imagem: null, fonte: 'AnimeNews', categoria: 'dragonball', criado_em: new Date().toISOString() },
-  { id: '9', titulo: 'Retorno do anime é discutido fortemente por ex-diretor', url: '#', imagem: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1920&auto=format&fit=crop', fonte: 'NewsAPI', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '1', titulo: 'Sparking Zero rompe barreiras: Nova engine traz lutas destrutivas', url: 'https://br.ign.com/dragon-ball-sparking-zero', imagem: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop', fonte: 'AnimeNews', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '2', titulo: 'Mangá de Dragon Ball Super revela nova transformação de Gohan', url: 'https://www.reddit.com/r/dbz/', imagem: 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1920&auto=format&fit=crop', fonte: 'Reddit', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '3', titulo: 'O legado de Akira Toriyama: Entrevista inédita', url: 'https://www.animenewsnetwork.com/', imagem: null, fonte: 'NewsAPI', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '7', titulo: 'Possível teaser da nova saga ganha data oficial', url: 'https://www.reddit.com/r/dragonball/', imagem: 'https://placehold.co/600x400/1a1a1a/f59e0b?text=Nova+Saga', fonte: 'Reddit', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '8', titulo: 'Comunidade reage a novo jogo Mobile da franquia', url: 'https://twitter.com/search?q=dragon%20ball%20mobile', imagem: null, fonte: 'AnimeNews', categoria: 'dragonball', criado_em: new Date().toISOString() },
+  { id: '9', titulo: 'Retorno do anime é discutido fortemente por ex-diretor', url: 'https://screenrant.com/dragon-ball-super-anime-return/', imagem: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1920&auto=format&fit=crop', fonte: 'NewsAPI', categoria: 'dragonball', criado_em: new Date().toISOString() },
   
   // Animes
-  { id: '4', titulo: 'Solo Leveling: Episódio final da 1ª temporada quebra a internet', url: '#', imagem: 'https://images.unsplash.com/photo-1578632616212-32b0f4d36efd?q=80&w=1920&auto=format&fit=crop', fonte: 'IGN', categoria: 'animes', criado_em: new Date().toISOString() },
-  { id: '5', titulo: 'Demon Slayer: Treinamento Hashira chegará aos cinemas na próxima semana', url: '#', imagem: null, fonte: 'Reddit', categoria: 'animes', criado_em: new Date().toISOString() },
-  { id: '6', titulo: 'Jujutsu Kaisen entra no seu arco final no Mangá', url: '#', imagem: 'https://images.unsplash.com/photo-1613376023733-0a73315d9b06?q=80&w=1920&auto=format&fit=crop', fonte: 'NewsAPI', categoria: 'animes', criado_em: new Date().toISOString() },
-  { id: '10', titulo: 'Attack on Titan finaliza como a série mais bem avaliada do ano', url: '#', imagem: 'https://placehold.co/600x400/1a1a1a/ef4444?text=AOT', fonte: 'AnimeNews', categoria: 'animes', criado_em: new Date().toISOString() },
-  { id: '11', titulo: 'O retorno de Bleach agita fãs de todo o mundo', url: '#', imagem: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop', fonte: 'Reddit', categoria: 'animes', criado_em: new Date().toISOString() },
-  { id: '12', titulo: 'Hunter x Hunter pode ganhar novos capítulos ainda esse semestre', url: '#', imagem: null, fonte: 'NewsAPI', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '4', titulo: 'Solo Leveling: Episódio final da 1ª temporada quebra a internet', url: 'https://br.ign.com/solo-leveling-anime', imagem: 'https://images.unsplash.com/photo-1578632616212-32b0f4d36efd?q=80&w=1920&auto=format&fit=crop', fonte: 'IGN', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '5', titulo: 'Demon Slayer: Treinamento Hashira chegará aos cinemas na próxima semana', url: 'https://www.reddit.com/r/anime/', imagem: null, fonte: 'Reddit', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '6', titulo: 'Jujutsu Kaisen entra no seu arco final no Mangá', url: 'https://mangaplus.shueisha.co.jp/', imagem: 'https://images.unsplash.com/photo-1613376023733-0a73315d9b06?q=80&w=1920&auto=format&fit=crop', fonte: 'NewsAPI', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '10', titulo: 'Attack on Titan finaliza como a série mais bem avaliada do ano', url: 'https://myanimelist.net/', imagem: 'https://placehold.co/600x400/1a1a1a/ef4444?text=AOT', fonte: 'AnimeNews', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '11', titulo: 'O retorno de Bleach agita fãs de todo o mundo', url: 'https://www.reddit.com/r/bleach/', imagem: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop', fonte: 'Reddit', categoria: 'animes', criado_em: new Date().toISOString() },
+  { id: '12', titulo: 'Hunter x Hunter pode ganhar novos capítulos ainda esse semestre', url: 'https://www.viz.com/shonenjump', imagem: null, fonte: 'NewsAPI', categoria: 'animes', criado_em: new Date().toISOString() },
 ]
 
 export default function Noticias() {
@@ -38,7 +38,7 @@ export default function Noticias() {
     <div className="container mx-auto px-4 py-16 min-h-[calc(100vh-8rem)]">
       <div className="text-center mb-16 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary blur-[100px] -z-10 rounded-full" />
-        <h1 className="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">
           CENTRAL DE <span className="text-primary text-glow">NOTÍCIAS</span>
         </h1>
         <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
@@ -47,25 +47,25 @@ export default function Noticias() {
       </div>
 
       {/* Tabs */}
-      <div className="flex justify-center mb-16">
-        <div className="bg-[#0a0a0a] p-2 rounded-full flex gap-2 border border-primary/20 shadow-2xl relative">
+      <div className="flex justify-center mb-10 sm:mb-16 px-4">
+        <div className="bg-[#0a0a0a] p-2 rounded-full flex w-full max-w-[340px] sm:max-w-md border border-primary/20 shadow-2xl relative">
           <div 
             className={`absolute inset-y-2 w-[calc(50%-0.5rem)] bg-primary rounded-full transition-transform duration-500 ease-out z-0
-              ${activeTab === 'animes' ? 'translate-x-full ml-2' : 'translate-x-0'}
+              ${activeTab === 'animes' ? 'translate-x-full' : 'translate-x-0'}
             `} 
           />
           <button
             onClick={() => setActiveTab('dragonball')}
-            className={`relative z-10 px-8 py-4 rounded-full text-sm font-black uppercase tracking-widest transition-colors w-48
-              ${activeTab === 'dragonball' ? 'text-black' : 'text-primary hover:text-orange-400'}`
+            className={`relative z-10 py-3 sm:py-4 flex-1 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest transition-colors
+              ${activeTab === 'dragonball' ? 'text-white' : 'text-primary hover:text-white'}`
             }
           >
             Dragon Ball
           </button>
           <button
             onClick={() => setActiveTab('animes')}
-            className={`relative z-10 px-8 py-4 rounded-full text-sm font-black uppercase tracking-widest transition-colors w-48
-              ${activeTab === 'animes' ? 'text-black' : 'text-primary hover:text-orange-400'}`
+            className={`relative z-10 py-3 sm:py-4 flex-1 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest transition-colors
+              ${activeTab === 'animes' ? 'text-white' : 'text-primary hover:text-white'}`
             }
           >
             Geral

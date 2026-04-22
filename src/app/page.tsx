@@ -65,7 +65,7 @@ export default function Home() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-center mb-24 space-y-6 relative pt-10"
       >
-        <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter uppercase leading-none drop-shadow-2xl">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter uppercase leading-none drop-shadow-2xl">
           01 DOS <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-primary to-red-600 text-glow">
             ANIMES

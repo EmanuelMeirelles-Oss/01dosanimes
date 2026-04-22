@@ -185,13 +185,13 @@ export default function Frases() {
         </div>
 
         {/* Filtros */}
-        <div className="flex justify-center mb-10">
-          <div className="bg-[#0a0a0a] p-2 rounded-full flex gap-2 border border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] relative">
+        <div className="flex justify-center mb-10 w-full px-2">
+          <div className="bg-[#0a0a0a] p-1.5 sm:p-2 rounded-full flex gap-1 sm:gap-2 border border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] relative overflow-x-auto hide-scrollbar max-w-full">
             {['Todos', 'Dragon Ball', 'Outros animes'].map(cat => (
               <button
                 key={cat}
                 onClick={() => { setFilter(cat); setCurrentIndex(0); }}
-                className={`relative z-10 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-colors
+                className={`relative z-10 px-4 sm:px-6 py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap
                   ${filter === cat ? 'bg-primary text-white' : 'text-primary/40 hover:text-primary'}
                 `}
               >
@@ -243,29 +243,30 @@ export default function Frases() {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center gap-4 mt-12 mb-12">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 mt-8 sm:mt-12 mb-12 w-full px-2">
           <button 
             onClick={prevFrase}
-            className="p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl"
+            className="p-3 sm:p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl shrink-0"
             aria-label="Anterior"
           >
-            <ChevronLeft className="w-6 h-6 -ml-1" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 -ml-1" />
           </button>
           
           <button 
             onClick={downloadImage}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-black font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(249,115,22,0.4)]"
+            className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 rounded-full bg-primary text-black text-xs sm:text-sm font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(249,115,22,0.4)] flex-1 max-w-[200px] sm:max-w-none"
           >
-            <Download className="w-5 h-5" />
-            BAIXAR AQUI
+            <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="hidden min-[380px]:inline">BAIXAR AQUI</span>
+            <span className="min-[380px]:hidden">BAIXAR</span>
           </button>
 
           <button 
             onClick={nextFrase}
-            className="p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl"
+            className="p-3 sm:p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl shrink-0"
             aria-label="Próxima"
           >
-            <ChevronRight className="w-6 h-6 -mr-1" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 -mr-1" />
           </button>
         </div>
       </div>
