@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Share2, Facebook, Twitter, Link as LinkIcon, Flame } from 'lucide-react'
+import { ArrowLeft, Clock, Share2, Facebook, Twitter, Link as LinkIcon, Flame, ShoppingCart } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 // Mock de dados para a página de notícia (no futuro, vira fetch do DB)
@@ -111,6 +111,27 @@ export default function NoticiaPage() {
           {/* Conteúdo HTML */}
           <div className="prose prose-invert prose-orange max-w-none prose-lg md:prose-xl prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter prose-p:text-zinc-300 prose-p:leading-relaxed prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg">
             <div dangerouslySetInnerHTML={{ __html: noticia.conteudo_html }} />
+          </div>
+
+          {/* Afiliado Contextual */}
+          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-[#141414] to-[#0a0a0a] border border-primary/20 relative overflow-hidden group shadow-2xl">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-colors pointer-events-none" />
+            <div className="relative z-10 flex flex-col sm:flex-row items-center gap-8">
+              <div className="w-40 h-40 flex-shrink-0 bg-black rounded-xl border border-[#2a2a2a] overflow-hidden shadow-2xl group-hover:scale-105 transition-transform">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/wal_goku.png" alt="Produto Recomendado" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <span className="text-primary text-xs font-black uppercase tracking-widest mb-2 block text-glow">Patrocinado · Recomendação 01</span>
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Setup Otaku / Colecionáveis</h3>
+                <p className="text-zinc-400 text-sm md:text-base mb-6 max-w-lg">
+                  Aproveite a empolgação da notícia e garanta itens exclusivos do seu anime favorito com desconto na Amazon.
+                </p>
+                <a href="#" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-black uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] text-sm">
+                  <ShoppingCart className="w-5 h-5" /> Ver Ofertas na Amazon
+                </a>
+              </div>
+            </div>
           </div>
 
         </motion.div>

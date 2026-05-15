@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Newspaper, Quote, ShoppingBag, ArrowRight, Dumbbell } from 'lucide-react'
+import { Newspaper, Quote, ShoppingBag, ArrowRight, Dumbbell, Download } from 'lucide-react'
 
 export default function Home() {
   const menus = [
@@ -119,6 +119,45 @@ export default function Home() {
             </motion.div>
           </Link>
         ))}
+      </motion.div>
+
+      {/* Seção Vistos no Instagram */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full max-w-7xl mt-32 z-10"
+      >
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter text-white drop-shadow-lg">
+              Vistos no <span className="text-primary text-glow">Instagram</span>
+            </h2>
+            <p className="text-zinc-400 font-medium mt-2">As artes épicas que acabaram de sair nos stories.</p>
+          </div>
+          <Link href="/frases" className="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:text-white transition-colors">
+            Ver todas <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          {['/wal_goku.png', '/wal_luffy.png', '/wal_naruto.png', '/wal_levi.png'].map((imgSrc, i) => (
+            <Link href="/frases" key={i} className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-[#0a0a0a] border border-[#1f1f1f] hover:border-primary/50 transition-colors block shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={imgSrc} alt="Wallpaper do Instagram" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-4 left-4 right-4 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                <span className="bg-primary text-black text-xs font-black uppercase tracking-widest px-5 py-2.5 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] inline-flex items-center gap-2">
+                  <Download className="w-3 h-3" /> Baixar
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <Link href="/frases" className="sm:hidden flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-widest text-primary hover:text-white transition-colors mt-8 bg-[#0a0a0a] py-4 rounded-xl border border-[#1f1f1f]">
+          Ver todas <ArrowRight className="w-4 h-4" />
+        </Link>
       </motion.div>
     </div>
   )

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download, Quote, X, Copy, Check, Heart, Search } from 'lucide-react'
+import { Download, Quote, X, Copy, Check, Heart, Search, Sparkles } from 'lucide-react'
 
 const wallpapers = [
   {
@@ -141,6 +141,11 @@ export default function FrasesWallpapers() {
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
+  }
+
+  const handleGacha = () => {
+    const randomIndex = Math.floor(Math.random() * wallpapers.length)
+    setSelectedImage(wallpapers[randomIndex])
   }
 
   return (
@@ -347,6 +352,19 @@ export default function FrasesWallpapers() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Botão Gacha / Surpreenda-me */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleGacha}
+        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-orange-500 to-red-600 text-white p-4 rounded-full shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] transition-shadow border border-white/20 group flex items-center gap-3 overflow-hidden"
+      >
+        <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+        <span className="font-black uppercase tracking-widest text-sm hidden md:block">
+          Giro Épico
+        </span>
+      </motion.button>
     </div>
   )
 }
