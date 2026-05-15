@@ -1,18 +1,17 @@
 "use client"
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
-import html2canvas from 'html2canvas'
+import { Download, Quote, X, Copy, Check, Heart, Search } from 'lucide-react'
 
-const frases = [
+const wallpapers = [
   {
     id: 1,
     texto: "Eu preferiria ser um macaco sem cérebro, do que um monstro sem coração.",
     personagem: "Goku",
     serie: "Dragon Ball Z",
-    cor: "#f97316", // primary orange
-    imagemBackground: "/wal_goku.png",
+    cor: "#f97316",
+    imagem: "/wal_goku.png",
     categoria: "Dragon Ball"
   },
   {
@@ -20,8 +19,8 @@ const frases = [
     texto: "Você é o número um!",
     personagem: "Vegeta",
     serie: "Dragon Ball Z",
-    cor: "#f97316", // padronizar tudo pra identidade da marca ajudaria, mas vou manter as cores base per personagem se quiser, ou focar no laranja.
-    imagemBackground: "/wal_vegeta.png",
+    cor: "#ea580c",
+    imagem: "/wal_vegeta.png",
     categoria: "Dragon Ball"
   },
   {
@@ -30,7 +29,7 @@ const frases = [
     personagem: "Rock Lee",
     serie: "Naruto",
     cor: "#22c55e",
-    imagemBackground: "/wal_rocklee.png",
+    imagem: "/wal_rocklee.png",
     categoria: "Outros animes"
   },
   {
@@ -39,7 +38,7 @@ const frases = [
     personagem: "Naruto Uzumaki",
     serie: "Naruto Shippuden",
     cor: "#f97316",
-    imagemBackground: "/wal_naruto.png",
+    imagem: "/wal_naruto.png",
     categoria: "Outros animes"
   },
   {
@@ -48,7 +47,7 @@ const frases = [
     personagem: "Itachi Uchiha",
     serie: "Naruto",
     cor: "#ef4444",
-    imagemBackground: "/wal_itachi.png",
+    imagem: "/wal_itachi.png",
     categoria: "Outros animes"
   },
   {
@@ -57,7 +56,7 @@ const frases = [
     personagem: "Piccolo",
     serie: "Dragon Ball Z",
     cor: "#10b981",
-    imagemBackground: "/wal_piccolo.png",
+    imagem: "/wal_piccolo.png",
     categoria: "Dragon Ball"
   },
   {
@@ -66,7 +65,7 @@ const frases = [
     personagem: "Luffy",
     serie: "One Piece",
     cor: "#ef4444",
-    imagemBackground: "/wal_luffy.png",
+    imagem: "/wal_luffy.png",
     categoria: "Outros animes"
   },
   {
@@ -75,7 +74,7 @@ const frases = [
     personagem: "Levi Ackerman",
     serie: "Attack on Titan",
     cor: "#10b981", 
-    imagemBackground: "/wal_levi.png",
+    imagem: "/wal_levi.png",
     categoria: "Outros animes"
   },
   {
@@ -84,7 +83,7 @@ const frases = [
     personagem: "Eren Yeager",
     serie: "Attack on Titan",
     cor: "#22c55e",
-    imagemBackground: "/wal_eren.png",
+    imagem: "/wal_eren.png",
     categoria: "Outros animes"
   },
   {
@@ -93,7 +92,7 @@ const frases = [
     personagem: "Edward Elric",
     serie: "Fullmetal Alchemist",
     cor: "#3b82f6",
-    imagemBackground: "/wal_edward.png",
+    imagem: "/wal_edward.png",
     categoria: "Outros animes"
   },
   {
@@ -102,7 +101,7 @@ const frases = [
     personagem: "Roy Mustang",
     serie: "Fullmetal Alchemist",
     cor: "#ef4444",
-    imagemBackground: "/wal_mustang.png",
+    imagem: "/wal_mustang.png",
     categoria: "Outros animes"
   },
   {
@@ -111,165 +110,243 @@ const frases = [
     personagem: "Saitama",
     serie: "One Punch Man",
     cor: "#f59e0b",
-    imagemBackground: "/wal_saitama.png",
+    imagem: "/wal_saitama.png",
     categoria: "Outros animes"
   }
 ]
 
-export default function Frases() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function FrasesWallpapers() {
   const [filter, setFilter] = useState("Todos")
-  const cardRef = useRef<HTMLDivElement>(null)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedImage, setSelectedImage] = useState<typeof wallpapers[0] | null>(null)
+  const [copied, setCopied] = useState(false)
+  const [likedItems, setLikedItems] = useState<number[]>([])
 
-  const frasesFiltradas = filter === "Todos" 
-    ? frases 
-    : frases.filter(f => f.categoria === filter)
+  const items = wallpapers.filter(w => {
+    const matchCat = filter === "Todos" || w.categoria === filter
+    const matchSearch = w.texto.toLowerCase().includes(searchQuery.toLowerCase()) || w.personagem.toLowerCase().includes(searchQuery.toLowerCase()) || w.serie.toLowerCase().includes(searchQuery.toLowerCase())
+    return matchCat && matchSearch
+  })
 
-  if (currentIndex >= frasesFiltradas.length && frasesFiltradas.length > 0) {
-    setCurrentIndex(0)
+  const toggleLike = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation()
+    setLikedItems(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id])
   }
 
-  const currentFrase = frasesFiltradas[currentIndex]
-
-  const nextFrase = () => {
-    setCurrentIndex((prev) => (prev + 1) % frasesFiltradas.length)
-  }
-
-  const prevFrase = () => {
-    setCurrentIndex((prev) => (prev - 1 + frasesFiltradas.length) % frasesFiltradas.length)
-  }
-
-  const downloadImage = async () => {
-    if (!cardRef.current) return
+  const handleCopy = async (texto: string) => {
     try {
-      const canvas = await html2canvas(cardRef.current, {
-        useCORS: true,
-        scale: 2,
-        backgroundColor: '#000000'
-      })
-      const url = canvas.toDataURL('image/png')
-      const link = document.createElement('a')
-      link.download = `frase-${currentFrase.personagem.toLowerCase().replace(/\s+/g, '-')}.png`
-      link.href = url
-      link.click()
+      await navigator.clipboard.writeText(`"${texto}"`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to generate image', err)
+      console.error('Failed to copy text: ', err);
     }
   }
 
-  if (!currentFrase) {
-    return <div className="h-screen flex items-center justify-center text-primary font-black tracking-widest text-2xl uppercase">Nenhuma frase encontrada.</div>
-  }
-
   return (
-    <div className="min-h-[calc(100vh-8rem)] relative flex flex-col pt-12 overflow-hidden">
-      {/* Background Image of the entire page with blur */}
-      <AnimatePresence mode="wait">
-        <motion.div 
-          key={currentFrase.id + "-bg"}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 -z-20 bg-cover bg-center blur-lg"
-          style={{ backgroundImage: `url(${currentFrase.imagemBackground})` }}
-        />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent -z-10" />
+    <div className="min-h-[calc(100vh-8rem)] relative pb-20">
+      
+      {/* Background Decorativo Suave */}
+      <div className="absolute top-0 left-0 w-full h-[500px] overflow-hidden -z-20 opacity-20 pointer-events-none" style={{ maskImage: 'linear-gradient(to bottom, black, transparent)' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/collage.jpg" alt="Background" className="w-full h-full object-cover filter grayscale blur-sm" />
+      </div>
 
-      <div className="container mx-auto px-4 flex flex-col items-center z-10 flex-1">
-        <div className="text-center mb-8 relative">
-          <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter text-glow text-primary">
-            FRASES <span className="text-white">LENDÁRIAS</span>
+      <div className="container mx-auto px-4 lg:px-8 pt-16">
+        
+        {/* Header */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+          <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-glow text-white">
+            Frases & <span className="text-primary">Wallpapers</span>
           </h1>
+          <p className="text-zinc-400 text-sm md:text-lg max-w-2xl mx-auto font-medium">
+            Artes exclusivas combinadas com as frases mais marcantes dos animes. 
+            Baixe e personalize seus dispositivos.
+          </p>
         </div>
 
-        {/* Filtros */}
-        <div className="flex justify-center mb-10 w-full px-2">
-          <div className="bg-[#0a0a0a] p-1.5 sm:p-2 rounded-full flex gap-1 sm:gap-2 border border-primary/20 shadow-[0_0_15px_rgba(249,115,22,0.1)] relative overflow-x-auto hide-scrollbar max-w-full">
+        {/* Filtros e Busca */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+          
+          {/* Categorias */}
+          <div className="bg-[#0a0a0a] p-1.5 sm:p-2 rounded-full flex gap-1 sm:gap-2 border border-[#1f1f1f] shadow-lg">
             {['Todos', 'Dragon Ball', 'Outros animes'].map(cat => (
               <button
                 key={cat}
-                onClick={() => { setFilter(cat); setCurrentIndex(0); }}
-                className={`relative z-10 px-4 sm:px-6 py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap
-                  ${filter === cat ? 'bg-primary text-white' : 'text-primary/40 hover:text-primary'}
+                onClick={() => setFilter(cat)}
+                className={`px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest transition-all
+                  ${filter === cat 
+                    ? 'bg-primary text-black shadow-[0_0_15px_rgba(249,115,22,0.4)]' 
+                    : 'text-zinc-500 hover:text-white'
+                  }
                 `}
               >
                 {cat}
               </button>
             ))}
           </div>
+
+          {/* Busca */}
+          <div className="relative w-full md:w-80">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+            <input 
+              type="text" 
+              placeholder="Buscar personagem, anime ou frase..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#0a0a0a] border border-[#1f1f1f] text-white rounded-full pl-12 pr-6 py-3.5 text-sm focus:outline-none focus:border-primary transition-colors shadow-lg placeholder:text-zinc-600"
+            />
+          </div>
         </div>
 
-        {/* Card Canvas - Separated Layout */}
-        <div className="relative group w-full max-w-xl">
-          <motion.div 
-            key={currentFrase.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 15 }}
-            ref={cardRef}
-            className="w-full flex flex-col rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(249,115,22,0.15)] border border-[#1f1f1f] group-hover:border-primary/50 transition-colors duration-500 bg-[#000000]"
-          >
-            {/* Top Area: Clean Wallpaper Image (No text over image) */}
-            <div className="w-full h-[400px] relative bg-[#050505] border-b border-[#1f1f1f]">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url(${currentFrase.imagemBackground})` }}
-              />
-            </div>
-            
-            {/* Bottom Area: Text and Branding */}
-            <div className="w-full p-8 md:p-10 flex flex-col items-center text-center bg-[#0a0a0a] relative">
-              <Quote className="absolute top-6 left-6 w-8 h-8 opacity-20" style={{ color: currentFrase.cor }} />
-              <Quote className="absolute bottom-6 right-6 w-8 h-8 opacity-20 rotate-180" style={{ color: currentFrase.cor }} />
-              
-              <h2 
-                className="text-xl sm:text-2xl font-black leading-relaxed mb-6 text-white z-10 px-4"
+        {/* Galeria Grid Masonry-like */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <AnimatePresence>
+            {items.map((item, i) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                key={item.id}
+                className="group relative rounded-2xl overflow-hidden bg-[#050505] border border-[#1f1f1f] cursor-pointer hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]"
+                onClick={() => setSelectedImage(item)}
               >
-                &ldquo;{currentFrase.texto}&rdquo;
-              </h2>
-              
-              <div className="flex flex-col items-center z-10">
-                <span className="text-lg font-black uppercase tracking-widest" style={{ color: currentFrase.cor }}>
-                  {currentFrase.personagem}
-                </span>
-                <span className="text-xs font-bold text-primary/60 uppercase tracking-widest mt-1">
-                  {currentFrase.serie}
-                </span>
-              </div>
-            </div>
-          </motion.div>
+                {/* Imagem (Proporção Retrato para Wallpapers) */}
+                <div className="aspect-[9/16] relative overflow-hidden bg-[#0a0a0a]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={item.imagem} 
+                    alt={`Wallpaper ${item.personagem}`} 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                    loading="lazy"
+                  />
+                  
+                  {/* Heart Button Overlay */}
+                  <div className="absolute top-4 right-4 z-30">
+                    <button 
+                      onClick={(e) => toggleLike(e, item.id)}
+                      className={`p-2 rounded-full backdrop-blur-md transition-all duration-300 ${likedItems.includes(item.id) ? 'bg-red-500/20' : 'bg-black/40 hover:bg-black/60'}`}
+                    >
+                      <Heart className={`w-5 h-5 ${likedItems.includes(item.id) ? 'fill-red-500 text-red-500' : 'text-white'}`} />
+                    </button>
+                  </div>
+                  
+                  {/* Overlay gradiente escuro na base para a citação */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+                  {/* Botão de View hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                    <span className="bg-black/60 backdrop-blur-md px-6 py-2 rounded-full text-white text-sm font-black tracking-widest uppercase border border-white/10 shadow-xl">
+                      Visualizar
+                    </span>
+                  </div>
+                </div>
+
+                {/* Conteúdo sobreposto na imagem */}
+                <div className="absolute bottom-0 left-0 w-full p-6 z-10 pointer-events-none">
+                  <Quote className="w-5 h-5 text-primary mb-2 opacity-70" />
+                  <h3 className="text-sm font-bold text-white leading-relaxed mb-3 line-clamp-3 text-shadow-sm">
+                    "{item.texto}"
+                  </h3>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-black uppercase tracking-widest text-primary">
+                      {item.personagem}
+                    </span>
+                    <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">
+                      {item.serie}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 mt-8 sm:mt-12 mb-12 w-full px-2">
-          <button 
-            onClick={prevFrase}
-            className="p-3 sm:p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl shrink-0"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 -ml-1" />
-          </button>
-          
-          <button 
-            onClick={downloadImage}
-            className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 rounded-full bg-primary text-black text-xs sm:text-sm font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(249,115,22,0.4)] flex-1 max-w-[200px] sm:max-w-none"
-          >
-            <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="hidden min-[380px]:inline">BAIXAR AQUI</span>
-            <span className="min-[380px]:hidden">BAIXAR</span>
-          </button>
+        {items.length === 0 && (
+          <div className="text-center py-20 text-zinc-500 font-medium">
+            Nenhuma arte encontrada nesta categoria.
+          </div>
+        )}
 
-          <button 
-            onClick={nextFrase}
-            className="p-3 sm:p-4 rounded-full bg-[#111] hover:bg-primary text-primary/60 hover:text-black border border-primary/20 hover:border-primary transition-all duration-300 shadow-xl shrink-0"
-            aria-label="Próxima"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 -mr-1" />
-          </button>
-        </div>
       </div>
+
+      {/* Modal de Visualização Imersiva */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/95 backdrop-blur-md"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-50 backdrop-blur-sm"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <motion.div 
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="flex flex-col md:flex-row bg-[#0a0a0a] border border-[#1f1f1f] rounded-3xl overflow-hidden max-w-6xl w-full max-h-[90vh] shadow-2xl"
+            >
+              {/* Lado Esquerdo: A Imagem em si */}
+              <div className="w-full md:w-1/2 flex items-center justify-center bg-black/50 relative overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src={selectedImage.imagem} 
+                  alt={selectedImage.personagem}
+                  className="max-h-[50vh] md:max-h-[90vh] w-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+
+              {/* Lado Direito: Ações e Citação Detalhada */}
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center relative overflow-y-auto custom-scrollbar">
+                <Quote className="w-12 h-12 text-primary/20 mb-6" />
+                
+                <h2 className="text-2xl md:text-4xl font-black leading-tight text-white mb-8">
+                  "{selectedImage.texto}"
+                </h2>
+                
+                <div className="mb-10">
+                  <p className="text-xl font-black uppercase tracking-widest text-primary mb-1">
+                    {selectedImage.personagem}
+                  </p>
+                  <p className="text-sm font-bold uppercase tracking-widest text-zinc-500">
+                    {selectedImage.serie}
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                  <a 
+                    href={selectedImage.imagem}
+                    download={`wallpaper-${selectedImage.personagem.toLowerCase().replace(/\s+/g, '-')}.png`}
+                    className="flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-primary text-black font-black uppercase tracking-widest hover:brightness-110 transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_30px_rgba(249,115,22,0.3)]"
+                  >
+                    <Download className="w-5 h-5" />
+                    Baixar Imagem
+                  </a>
+                  
+                  <button 
+                    onClick={() => handleCopy(selectedImage.texto)}
+                    className="flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#141414] text-white font-black uppercase tracking-widest hover:bg-[#1f1f1f] border border-[#2a2a2a] transition-all hover:scale-[1.02] active:scale-95"
+                  >
+                    {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
+                    {copied ? 'Copiado!' : 'Copiar Frase'}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

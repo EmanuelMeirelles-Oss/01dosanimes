@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Newspaper, Quote, ShoppingBag, ArrowRight } from 'lucide-react'
+import { Newspaper, Quote, ShoppingBag, ArrowRight, Dumbbell } from 'lucide-react'
 
 export default function Home() {
   const menus = [
@@ -22,6 +22,15 @@ export default function Home() {
       icon: Quote,
       color: 'from-zinc-500/20 to-zinc-900/20',
       border: 'hover:border-zinc-400',
+      disabled: false
+    },
+    {
+      title: 'Treino & Motivação',
+      description: 'Rotinas de treino inspiradas nos seus personagens favoritos.',
+      href: '/treino',
+      icon: Dumbbell,
+      color: 'from-green-500/20 to-emerald-900/20',
+      border: 'hover:border-green-500',
       disabled: false
     },
     {
@@ -80,7 +89,7 @@ export default function Home() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-6xl z-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl z-10"
       >
         {menus.map((menu) => (
           <Link key={menu.href} href={menu.href} className={`block w-full h-full ${menu.disabled ? 'pointer-events-none opacity-50 grayscale' : ''}`}>
