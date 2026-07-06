@@ -254,7 +254,7 @@ export default function FrasesWallpapers() {
                 <div className="absolute bottom-0 left-0 w-full p-6 z-10 pointer-events-none">
                   <Quote className="w-5 h-5 text-primary mb-2 opacity-70" />
                   <h3 className="text-sm font-bold text-white leading-relaxed mb-3 line-clamp-3 text-shadow-sm">
-                    "{item.texto}"
+                    &ldquo;{item.texto}&rdquo;
                   </h3>
                   <div className="flex flex-col">
                     <span className="text-xs font-black uppercase tracking-widest text-primary">
@@ -317,7 +317,7 @@ export default function FrasesWallpapers() {
                 <Quote className="w-12 h-12 text-primary/20 mb-6" />
                 
                 <h2 className="text-2xl md:text-4xl font-black leading-tight text-white mb-8">
-                  "{selectedImage.texto}"
+                  &ldquo;{selectedImage.texto}&rdquo;
                 </h2>
                 
                 <div className="mb-10">
@@ -362,7 +362,7 @@ export default function FrasesWallpapers() {
       >
         <Sparkles className="w-6 h-6 group-hover:rotate-12 transition-transform" />
         <span className="font-black uppercase tracking-widest text-sm hidden md:block">
-          Giro Épico
+          Surpreenda-me
         </span>
       </motion.button>
     </div>

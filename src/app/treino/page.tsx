@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Dumbbell, Flame, CheckCircle2, ChevronRight } from 'lucide-react'
-import Link from 'next/link'
 
 const mockTreinos = [
   {
@@ -72,8 +71,7 @@ export default function TreinoPage() {
             Treino & <span className="text-green-500">Motivação</span>
           </h1>
           <p className="text-zinc-400 text-sm md:text-lg max-w-2xl mx-auto font-medium">
-            Desperte o seu poder oculto. Rotinas de treino inspiradas nos guerreiros mais fortes dos animes. 
-            Chegou a hora de superar seus limites.
+            Rotinas de exercícios físicas temáticas inspiradas na disciplina e na força dos maiores guerreiros das séries.
           </p>
         </div>
 

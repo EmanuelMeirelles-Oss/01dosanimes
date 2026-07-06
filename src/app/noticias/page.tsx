@@ -17,28 +17,97 @@ const mockNoticias = [
   { id: '11', titulo: 'O retorno de Bleach agita fãs com nova parte de "Thousand-Year Blood War"', resumo: 'A animação deslumbrante do estúdio Pierrot continua a adaptar o arco final do mangá com cenas inéditas.', url: '/noticias/11', imagem: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop', fonte: 'Viz Media', categoria: 'Anime', destaque: false, criado_em: new Date(Date.now() - 259200000).toISOString() },
   { id: '9', titulo: 'Retorno do anime de Dragon Ball Super é discutido por ex-diretor', resumo: 'Rumores apontam que a série animada pode voltar após um longo hiato focado nos filmes.', url: '/noticias/9', imagem: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1920&auto=format&fit=crop', fonte: 'Toei Animation', categoria: 'Anime', destaque: false, criado_em: new Date(Date.now() - 345600000).toISOString() },
 ]
+interface NoticiaItem {
+  id: string;
+  titulo: string;
+  resumo: string;
+  url: string;
+  imagem: string | null;
+  fonte: string;
+  categoria: string;
+  destaque: boolean;
+  criado_em: string;
+}
+
+interface ApiRedditPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  imageUrl: string | null;
+  fonte?: string;
+  subreddit: string;
+  score: number;
+  publishedAt: string;
+}
 
 export default function Noticias() {
   const [activeCategory, setActiveCategory] = useState<string>('Todas')
   const [searchQuery, setSearchQuery] = useState('')
+  const [noticiasList, setNoticiasList] = useState<NoticiaItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const categorias = ['Todas', 'Anime', 'Mangá', 'Games']
+  const categorias = ['Todas', 'Dragon Ball', 'Outros Animes']
 
   useEffect(() => {
-    setIsLoading(true)
-    const timer = setTimeout(() => setIsLoading(false), 500)
-    return () => clearTimeout(timer)
-  }, [activeCategory, searchQuery])
+    async function loadNoticias() {
+      setIsLoading(true)
+      try {
+        const response = await fetch('/api/noticias/reddit')
+        if (response.ok) {
+          const data = await response.json()
+          if (data && data.length > 0) {
+            const mapped = data.map((post: ApiRedditPost) => {
+              const subLower = post.subreddit.toLowerCase()
+              const isDB = subLower === 'dragonball' || subLower === 'dbz' || 
+                           post.title.toLowerCase().includes('dragon ball') || 
+                           post.title.toLowerCase().includes('dbz') ||
+                           post.title.toLowerCase().includes('goku')
+              return {
+                id: post.id,
+                titulo: post.title,
+                resumo: post.excerpt,
+                url: `/noticias/${post.id}`,
+                imagem: post.imageUrl,
+                fonte: post.fonte || 'Reddit',
+                categoria: isDB ? 'Dragon Ball' : 'Outros Animes',
+                destaque: post.score >= 200,
+                criado_em: post.publishedAt
+              }
+            })
+            setNoticiasList(mapped)
+            setIsLoading(false)
+            return
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch from news API:', err)
+      }
 
-  const filteredNoticias = mockNoticias.filter(n => {
+      // Fallback a partir dos mocks originais
+      const mappedMocks = mockNoticias.map(n => {
+        const isDB = n.categoria === 'Dragon Ball' || 
+                     n.titulo.toLowerCase().includes('dragon ball') || 
+                     n.titulo.toLowerCase().includes('dbz') ||
+                     n.titulo.toLowerCase().includes('goku')
+        return {
+          ...n,
+          categoria: isDB ? 'Dragon Ball' : 'Outros Animes'
+        }
+      })
+      setNoticiasList(mappedMocks)
+      setIsLoading(false)
+    }
+    loadNoticias()
+  }, [])
+
+  const filteredNoticias = noticiasList.filter(n => {
     const matchCategory = activeCategory === 'Todas' || n.categoria === activeCategory
     const matchSearch = n.titulo.toLowerCase().includes(searchQuery.toLowerCase()) || n.resumo.toLowerCase().includes(searchQuery.toLowerCase())
     return matchCategory && matchSearch
   })
 
-  const destaque = mockNoticias.find(n => n.destaque)
-  const lista = filteredNoticias.filter(n => !n.destaque)
+  const destaque = activeCategory === 'Todas' ? (filteredNoticias.find(n => n.destaque) || filteredNoticias[0]) : null
+  const lista = destaque ? filteredNoticias.filter(n => n.id !== destaque.id) : filteredNoticias
 
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12 min-h-[calc(100vh-8rem)]">
@@ -46,10 +115,10 @@ export default function Noticias() {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#1f1f1f] pb-6 gap-6">
         <div className="flex-1">
           <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white">
-            Portal de <span className="text-primary">Notícias</span>
+            Notícias & <span className="text-primary">Novidades</span>
           </h1>
           <p className="text-zinc-400 mt-2 text-sm md:text-base max-w-xl">
-            Sua fonte definitiva para as últimas novidades do mundo otaku.
+            Acompanhe o que está acontecendo de mais relevante no universo dos animes, mangás e jogos.
           </p>
         </div>
 

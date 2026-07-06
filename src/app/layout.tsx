@@ -25,19 +25,26 @@ export default function RootLayout({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <div className="relative">
                 <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                <img 
-                  src="/logo.jpg" 
-                  alt="01dosAnimes Logo" 
-                  className="relative w-12 h-12 rounded-full border-2 border-primary/50 object-cover group-hover:border-primary transition-colors duration-500 shadow-xl" 
+                <img
+                  src="/logo.jpg"
+                  alt="01dosAnimes Logo"
+                  className="relative w-12 h-12 rounded-full border-2 border-primary/50 object-cover group-hover:border-primary transition-colors duration-500 shadow-xl"
                 />
               </div>
-              <span className="text-2xl font-black text-white tracking-tighter uppercase uppercase group-hover:text-primary transition-colors duration-300">
+              <span className="text-2xl font-black text-white tracking-tighter uppercase group-hover:text-primary transition-colors duration-300">
                 01dos<span className="text-primary group-hover:text-white transition-colors duration-300">Animes</span>
               </span>
             </Link>
-            <a 
-              href="https://instagram.com/01dosanimes" 
-              target="_blank" 
+
+            <nav className="hidden sm:flex items-center gap-6 text-[11px] font-black uppercase tracking-widest">
+              <Link href="/hoje" className="text-zinc-400 hover:text-primary transition-colors">Hoje</Link>
+              <Link href="/frases" className="text-zinc-400 hover:text-primary transition-colors">Frases</Link>
+              <Link href="/treino" className="text-zinc-400 hover:text-primary transition-colors">Treino</Link>
+            </nav>
+
+            <a
+              href="https://instagram.com/01dosanimes"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#111111] border border-[#222222] text-sm font-bold text-zinc-300 hover:text-black hover:bg-primary hover:border-primary transition-all duration-300 shadow-lg"
             >
@@ -61,9 +68,9 @@ export default function RootLayout({
               </p>
             </div>
             <div className="flex items-center gap-6 text-sm font-bold text-zinc-600 uppercase tracking-widest">
-              <Link href="/noticias" className="hover:text-primary transition-colors">Notícias</Link>
+              <Link href="/hoje" className="hover:text-primary transition-colors">Hoje</Link>
               <Link href="/frases" className="hover:text-primary transition-colors">Frases</Link>
-              <Link href="/loja" className="hover:text-primary transition-colors">Loja</Link>
+              <Link href="/treino" className="hover:text-primary transition-colors">Treino</Link>
             </div>
           </div>
         </footer>

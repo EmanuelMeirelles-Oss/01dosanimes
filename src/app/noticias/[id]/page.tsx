@@ -1,35 +1,115 @@
 "use client"
 
 import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Share2, Facebook, Twitter, Link as LinkIcon, Flame, ShoppingCart } from 'lucide-react'
+import { ArrowLeft, Clock, Facebook, Twitter, Link as LinkIcon, Flame, ShoppingCart, MessageSquare, ThumbsUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-// Mock de dados para a página de notícia (no futuro, vira fetch do DB)
-const getNoticiaDetails = (id: string) => {
-  return {
-    id,
-    titulo: 'Sparking Zero rompe barreiras: Nova engine traz lutas destrutivas',
-    resumo: 'A tão aguardada sequência da série Budokai Tenkaichi revela mecânicas de destruição de cenário sem precedentes e um elenco massivo de personagens.',
-    conteudo_html: `
-      <p>Os fãs de Dragon Ball têm motivos de sobra para comemorar. A Bandai Namco finalmente revelou mais detalhes sobre <strong>Dragon Ball: Sparking Zero</strong>, o sucessor espiritual da lendária série Budokai Tenkaichi.</p>
-      <h2>Destruição em Escala Global</h2>
-      <p>Uma das maiores novidades é a engine de destruição. Montanhas não apenas quebram, mas se desfazem em tempo real dependendo do impacto do golpe ou da rajada de ki. O clima também muda drasticamente durante o combate.</p>
-      <blockquote>"Queríamos trazer a verdadeira sensação de ser um guerreiro Z", disse o produtor principal.</blockquote>
-      <p>Além disso, o jogo contará com o maior elenco da história da franquia, incluindo personagens de Dragon Ball Super, GT e clássico.</p>
-    `,
-    imagem: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop',
-    fonte: 'Equipe 01zanimes',
-    autor: 'Emanuel',
-    categoria: 'Games',
-    tempo_leitura: '3 min',
-    criado_em: new Date().toISOString()
-  }
+interface NoticiaDetail {
+  id: string;
+  titulo: string;
+  resumo: string;
+  conteudo_html: string;
+  imagem: string | null;
+  fonte: string;
+  autor: string;
+  categoria: string;
+  tempo_leitura: string;
+  criado_em: string;
+}
+
+interface CommentDetail {
+  id: string;
+  author: string;
+  body: string;
+  score: number;
+  publishedAt: string;
 }
 
 export default function NoticiaPage() {
   const params = useParams()
-  const noticia = getNoticiaDetails(params.id as string)
+  const [noticia, setNoticia] = useState<NoticiaDetail | null>(null)
+  const [comments, setComments] = useState<CommentDetail[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchNoticia() {
+      setIsLoading(true)
+      try {
+        const response = await fetch(`/api/noticias/reddit/${params.id}`)
+        if (response.ok) {
+          const data = await response.json()
+          if (data && data.post) {
+            const post = data.post
+            // Adapt API format to what client UI expects
+            setNoticia({
+              id: post.id,
+              titulo: post.title,
+              resumo: post.content,
+              conteudo_html: post.conteudo_html,
+              imagem: post.imageUrl,
+              fonte: post.fonte || 'Reddit',
+              autor: post.author === 'Reddit Community' ? 'Comunidade' : 'Emanuel',
+              categoria: post.subreddit === 'dragonball' || post.subreddit === 'dbz' || post.title.toLowerCase().includes('dragon ball') || post.title.toLowerCase().includes('dbz') || post.title.toLowerCase().includes('goku') ? 'Dragon Ball' : 'Outros Animes',
+              tempo_leitura: '3 min',
+              criado_em: post.publishedAt
+            })
+            setComments(data.comments || [])
+            setIsLoading(false)
+            return
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching noticia details:', err)
+      }
+
+      // Fallback a partir dos mocks originais
+      const fallbackDetails = {
+        id: params.id as string,
+        titulo: 'Sparking Zero rompe barreiras: Nova engine traz lutas destrutivas',
+        resumo: 'A tão aguardada sequência da série Budokai Tenkaichi revela mecânicas de destruição de cenário sem precedentes e um elenco massivo de personagens.',
+        conteudo_html: `
+          <p>Os fãs de Dragon Ball têm motivos de sobra para comemorar. A Bandai Namco finalmente revelou mais detalhes sobre <strong>Dragon Ball: Sparking Zero</strong>, o sucessor espiritual da lendária série Budokai Tenkaichi.</p>
+          <h2>Destruição em Escala Global</h2>
+          <p>Uma das maiores novidades é a engine de destruição. Montanhas não apenas quebram, mas se desfazem em tempo real dependendo do impacto do golpe ou da rajada de ki. O clima também muda drasticamente durante o combate.</p>
+          <blockquote>"Queríamos trazer a verdadeira sensação de ser um guerreiro Z", disse o produtor principal.</blockquote>
+          <p>Além disso, o jogo contará com o maior elenco da história da franquia, incluindo personagens de Dragon Ball Super, GT e clássico.</p>
+        `,
+        imagem: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop',
+        fonte: 'Equipe 01zanimes',
+        autor: 'Emanuel',
+        categoria: 'Games',
+        tempo_leitura: '3 min',
+        criado_em: new Date().toISOString()
+      }
+      setNoticia(fallbackDetails)
+      setIsLoading(false)
+    }
+
+    if (params.id) {
+      fetchNoticia()
+    }
+  }, [params.id])
+
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center bg-black">
+        <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+      </div>
+    )
+  }
+
+  if (!noticia) {
+    return (
+      <div className="w-full min-h-screen flex flex-col items-center justify-center bg-black text-white gap-4">
+        <p className="text-zinc-400">Notícia não encontrada.</p>
+        <Link href="/noticias" className="text-primary font-bold hover:underline">
+          Voltar para Notícias
+        </Link>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen pb-20">
@@ -95,13 +175,13 @@ export default function NoticiaPage() {
 
               {/* Botões de Compartilhar */}
               <div className="flex gap-2">
-                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-blue-500 hover:border-blue-500 transition-colors">
+                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-blue-500 hover:border-blue-500 transition-colors" aria-label="Compartilhar no Facebook">
                   <Facebook className="w-4 h-4" />
                 </button>
-                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-sky-400 hover:border-sky-400 transition-colors">
+                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-sky-400 hover:border-sky-400 transition-colors" aria-label="Compartilhar no Twitter">
                   <Twitter className="w-4 h-4" />
                 </button>
-                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-white hover:border-white transition-colors">
+                <button className="p-2 rounded-full bg-[#0a0a0a] border border-[#1f1f1f] text-zinc-400 hover:text-white hover:border-white transition-colors" aria-label="Copiar link">
                   <LinkIcon className="w-4 h-4" />
                 </button>
               </div>
@@ -113,6 +193,32 @@ export default function NoticiaPage() {
             <div dangerouslySetInnerHTML={{ __html: noticia.conteudo_html }} />
           </div>
 
+          {/* Comentários do Reddit */}
+          <div className="mt-16 border-t border-[#1f1f1f] pt-10">
+            <h3 className="text-2xl font-black uppercase tracking-tighter text-white mb-6 flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-primary" /> Comentários da Comunidade ({comments.length})
+            </h3>
+            
+            <div className="flex flex-col gap-4">
+              {comments.map((comment) => (
+                <div key={comment.id} className="bg-[#050505] border border-[#1f1f1f] rounded-xl p-5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-sm text-zinc-300">u/{comment.author}</span>
+                    <span className="text-xs text-zinc-500">{new Date(comment.publishedAt).toLocaleDateString('pt-BR')}</span>
+                  </div>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{comment.body}</p>
+                  <div className="flex items-center gap-1.5 mt-3 text-xs text-zinc-500 font-bold uppercase tracking-wider">
+                    <ThumbsUp className="w-3.5 h-3.5 text-primary" />
+                    <span>{comment.score} pontos</span>
+                  </div>
+                </div>
+              ))}
+              {comments.length === 0 && (
+                <p className="text-zinc-500 text-sm italic">Nenhum comentário disponível.</p>
+              )}
+            </div>
+          </div>
+
           {/* Afiliado Contextual */}
           <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-[#141414] to-[#0a0a0a] border border-primary/20 relative overflow-hidden group shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-colors pointer-events-none" />
@@ -122,10 +228,10 @@ export default function NoticiaPage() {
                 <img src="/wal_goku.png" alt="Produto Recomendado" className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 text-center sm:text-left">
-                <span className="text-primary text-xs font-black uppercase tracking-widest mb-2 block text-glow">Patrocinado · Recomendação 01</span>
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Setup Otaku / Colecionáveis</h3>
+                <span className="text-primary text-xs font-black uppercase tracking-widest mb-2 block text-glow">Recomendado</span>
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">Produtos & Colecionáveis</h3>
                 <p className="text-zinc-400 text-sm md:text-base mb-6 max-w-lg">
-                  Aproveite a empolgação da notícia e garanta itens exclusivos do seu anime favorito com desconto na Amazon.
+                  Aproveite as novidades e garanta itens especiais das suas franquias preferidas diretamente na Amazon.
                 </p>
                 <a href="#" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-black uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] text-sm">
                   <ShoppingCart className="w-5 h-5" /> Ver Ofertas na Amazon

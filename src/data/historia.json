@@ -1,0 +1,532 @@
+[
+  {
+    "id": "1984-11-20-manga",
+    "mes": 11,
+    "dia": 20,
+    "ano": 1984,
+    "titulo": "O início da lenda: mangá de Dragon Ball é publicado",
+    "descricao": "O primeiro capítulo do mangá de Dragon Ball é publicado na revista Weekly Shōnen Jump, iniciando uma das maiores franquias da história dos animes.",
+    "categoria": "Mangá",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "1986-02-26-anime",
+    "mes": 2,
+    "dia": 26,
+    "ano": 1986,
+    "titulo": "Dragon Ball estreia na TV japonesa",
+    "descricao": "O anime clássico de Dragon Ball vai ao ar pela primeira vez na Fuji TV, introduzindo Goku e Bulma ao grande público.",
+    "categoria": "Anime",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "1989-04-26-dbz-estreia",
+    "mes": 4,
+    "dia": 26,
+    "ano": 1989,
+    "titulo": "Dragon Ball Z estreia no Japão",
+    "descricao": "Em 26 de abril de 1989, Dragon Ball Z faz sua estreia na Fuji TV. O primeiro episódio apresenta Raditz e o conceito de Saiyajin, mudando a franquia pra sempre.",
+    "categoria": "Anime",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "1991-08-14-ssj",
+    "mes": 8,
+    "dia": 14,
+    "ano": 1991,
+    "titulo": "O nascimento do Super Saiyajin",
+    "descricao": "Em um dos momentos mais icônicos da história dos animes, a morte de Kuririn faz Goku perder o controle e despertar a lendária transformação Super Saiyajin pela primeira vez.",
+    "categoria": "Anime",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "1993-05-18-gohan-ssj2-pre",
+    "mes": 5,
+    "dia": 18,
+    "ano": 1993,
+    "titulo": "A tensão antes da tempestade",
+    "descricao": "Durante os Jogos de Cell, a tensão atinge seu ápice. O Androide 16 é destruído, preparando o terreno para o despertar de uma força que nem mesmo Goku conseguiu alcançar.",
+    "categoria": "Anime",
+    "imagem": "/gohan.webp"
+  },
+  {
+    "id": "1993-05-19-gohan-ssj2",
+    "mes": 5,
+    "dia": 19,
+    "ano": 1993,
+    "titulo": "Gohan alcança o Super Saiyajin 2",
+    "descricao": "O episódio 184 de Dragon Ball Z é transmitido. O sacrifício do Androide 16 leva Gohan a despertar uma força avassaladora. Pela primeira vez, um filho supera o pai.",
+    "categoria": "Anime",
+    "imagem": "/gohan.webp"
+  },
+  {
+    "id": "1995-05-23-manga-end",
+    "mes": 5,
+    "dia": 23,
+    "ano": 1995,
+    "titulo": "Fim do mangá original de Dragon Ball",
+    "descricao": "O último capítulo de Dragon Ball é publicado na Weekly Shōnen Jump, encerrando uma era de 11 anos de publicações ininterruptas.",
+    "categoria": "Mangá",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "1995-10-04-eva-anime",
+    "mes": 10,
+    "dia": 4,
+    "ano": 1995,
+    "titulo": "Neon Genesis Evangelion estreia e muda tudo",
+    "descricao": "O anime de Hideaki Anno começa no Japão. Evangelion redefiniu o gênero mecha, explorou psicologia humana em profundidade e influenciou toda uma geração de criadores.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "1996-02-07-gt",
+    "mes": 2,
+    "dia": 7,
+    "ano": 1996,
+    "titulo": "Estreia de Dragon Ball GT",
+    "descricao": "A série sequencial não canônica estreia na TV japonesa, trazendo Goku de volta à forma de criança e introduzindo a controversa forma Super Saiyajin 4.",
+    "categoria": "Anime",
+    "imagem": "/dbz_1992_era.png"
+  },
+  {
+    "id": "1997-07-19-eoe",
+    "mes": 7,
+    "dia": 19,
+    "ano": 1997,
+    "titulo": "The End of Evangelion chega aos cinemas",
+    "descricao": "O controverso e catártico filme final de Evangelion é lançado no Japão. Uma obra que divide opiniões até hoje sobre os limites entre arte e narrativa.",
+    "categoria": "Filme",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "1997-07-22-onepiece-manga",
+    "mes": 7,
+    "dia": 22,
+    "ano": 1997,
+    "titulo": "One Piece: o começo da maior aventura",
+    "descricao": "O primeiro capítulo de One Piece, de Eiichiro Oda, é publicado na Weekly Shōnen Jump. A jornada de Monkey D. Luffy para se tornar o Rei dos Piratas começa aqui.",
+    "categoria": "Mangá",
+    "imagem": "/wal_luffy.png"
+  },
+  {
+    "id": "1998-03-16-hxh-manga",
+    "mes": 3,
+    "dia": 16,
+    "ano": 1998,
+    "titulo": "Hunter x Hunter chega às bancas",
+    "descricao": "O primeiro capítulo de Hunter x Hunter, de Yoshihiro Togashi, é publicado na Weekly Shōnen Jump. Gon Freecss começa sua busca pelo pai caçador.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "1999-09-21-naruto-manga",
+    "mes": 9,
+    "dia": 21,
+    "ano": 1999,
+    "titulo": "Nascimento de um ninja: mangá de Naruto estreia",
+    "descricao": "O primeiro capítulo do mangá Naruto, de Masashi Kishimoto, é publicado na Weekly Shōnen Jump. A história do ninja mais bagunceiro de Konoha que sonhava ser Hokage começa aqui.",
+    "categoria": "Mangá",
+    "imagem": "/wal_naruto.png"
+  },
+  {
+    "id": "1999-10-20-onepiece-anime",
+    "mes": 10,
+    "dia": 20,
+    "ano": 1999,
+    "titulo": "One Piece estreia no anime",
+    "descricao": "O anime de One Piece vai ao ar pela primeira vez no Japão. O que começou aqui se tornaria a série de mangá mais vendida da história.",
+    "categoria": "Anime",
+    "imagem": "/wal_luffy.png"
+  },
+  {
+    "id": "2000-10-18-pt-br",
+    "mes": 10,
+    "dia": 18,
+    "ano": 2000,
+    "titulo": "Dragon Ball Z conquista o Brasil",
+    "descricao": "DBZ atinge o ápice de popularidade no Brasil sendo transmitido na Band e mais tarde na TV Globinho, marcando gerações inteiras de jovens brasileiros.",
+    "categoria": "História",
+    "imagem": "/dbz_1992_era.png"
+  },
+  {
+    "id": "2001-08-07-bleach-manga",
+    "mes": 8,
+    "dia": 7,
+    "ano": 2001,
+    "titulo": "Bleach: o Substituto Shinigami chega",
+    "descricao": "O primeiro capítulo de Bleach, de Tite Kubo, é publicado na Weekly Shōnen Jump, dando início à saga de Ichigo Kurosaki e o mundo dos Shinigamis.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2002-10-03-naruto-anime",
+    "mes": 10,
+    "dia": 3,
+    "ano": 2002,
+    "titulo": "Naruto estreia no anime",
+    "descricao": "O anime de Naruto começa a ser transmitido no Japão, trazendo vida ao mundo dos ninjas e iniciando uma das séries mais assistidas de todos os tempos.",
+    "categoria": "Anime",
+    "imagem": "/wal_naruto.png"
+  },
+  {
+    "id": "2003-10-04-fma-anime",
+    "mes": 10,
+    "dia": 4,
+    "ano": 2003,
+    "titulo": "Fullmetal Alchemist: o anime original estreia",
+    "descricao": "A primeira adaptação anime de FMA começa no Japão. A série de Edward e Alphonse Elric na busca pela Pedra Filosofal conquista milhões de fãs.",
+    "categoria": "Anime",
+    "imagem": "/wal_edward.png"
+  },
+  {
+    "id": "2003-12-01-deathnote-manga",
+    "mes": 12,
+    "dia": 1,
+    "ano": 2003,
+    "titulo": "Death Note: o Caderno da Morte chega",
+    "descricao": "O primeiro capítulo de Death Note, de Tsugumi Ohba e Takeshi Obata, é publicado. A guerra de inteligência entre Light Yagami e L está prestes a começar.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2004-10-05-bleach-anime",
+    "mes": 10,
+    "dia": 5,
+    "ano": 2004,
+    "titulo": "Bleach anime estreia no Japão",
+    "descricao": "A animação de Bleach começa a ser transmitida, trazendo a Soul Society, os Shinigamis e as batalhas de Ichigo ao grande público.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "1955-04-05-akira-born",
+    "mes": 4,
+    "dia": 5,
+    "ano": 1955,
+    "titulo": "Nascimento de um gênio: Akira Toriyama",
+    "descricao": "Akira Toriyama nasce em Nagoya. Seu trabalho em Dr. Slump e Dragon Ball moldaria o futuro dos mangás e animes para sempre.",
+    "categoria": "História",
+    "imagem": "/wal_vegeta.png"
+  },
+  {
+    "id": "2006-10-04-deathnote-anime",
+    "mes": 10,
+    "dia": 4,
+    "ano": 2006,
+    "titulo": "Death Note anime: o gênio do thriller estreia",
+    "descricao": "O anime de Death Note começa no Japão. A série se tornaria um fenômeno global pela narrativa de gato e rato entre Light e L.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2007-02-15-shippuden",
+    "mes": 2,
+    "dia": 15,
+    "ano": 2007,
+    "titulo": "Naruto Shippuden estreia",
+    "descricao": "A continuação de Naruto, com foco na sua fase adulta, começa a ser transmitida. Shippuden mergulharia nos temas mais profundos da série: guerra, sacrifício e redenção.",
+    "categoria": "Anime",
+    "imagem": "/wal_naruto.png"
+  },
+  {
+    "id": "2009-04-05-kai",
+    "mes": 4,
+    "dia": 5,
+    "ano": 2009,
+    "titulo": "Dragon Ball Kai é lançado",
+    "descricao": "A versão remasterizada e sem fillers de DBZ começa a ser transmitida para comemorar os 20 anos da série, apresentando DBZ a uma nova geração.",
+    "categoria": "Anime",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "2009-04-05-fma-brotherhood",
+    "mes": 4,
+    "dia": 5,
+    "ano": 2009,
+    "titulo": "FMA Brotherhood começa — no mesmo dia que DBZ Kai",
+    "descricao": "No mesmo dia em que DBZ Kai estreia, Fullmetal Alchemist: Brotherhood começa a ser transmitido. A versão fiel ao mangá se tornaria um dos animes mais bem avaliados da história.",
+    "categoria": "Anime",
+    "imagem": "/wal_edward.png"
+  },
+  {
+    "id": "2009-09-09-aot-manga",
+    "mes": 9,
+    "dia": 9,
+    "ano": 2009,
+    "titulo": "Attack on Titan: o início do pesadelo",
+    "descricao": "O primeiro capítulo de Shingeki no Kyojin, de Hajime Isayama, é publicado na Bessatsu Shōnen Magazine, inaugurando uma das histórias mais intensas dos animes.",
+    "categoria": "Mangá",
+    "imagem": "/wal_eren.png"
+  },
+  {
+    "id": "2011-10-02-hxh-anime-2011",
+    "mes": 10,
+    "dia": 2,
+    "ano": 2011,
+    "titulo": "Hunter x Hunter 2011: a melhor adaptação",
+    "descricao": "A nova versão do anime de HxH começa, cobrindo arcos nunca antes animados com perfeição. A comunidade elege como uma das maiores séries já feitas.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2013-03-30-bog",
+    "mes": 3,
+    "dia": 30,
+    "ano": 2013,
+    "titulo": "Estreia de Dragon Ball: A Batalha dos Deuses",
+    "descricao": "O filme marca o grande retorno oficial de Dragon Ball e introduz Bills, Whis e a forma Super Saiyajin Deus, iniciando uma nova era da franquia.",
+    "categoria": "Filme",
+    "imagem": "/wal_vegeta.png"
+  },
+  {
+    "id": "2013-04-07-aot-anime",
+    "mes": 4,
+    "dia": 7,
+    "ano": 2013,
+    "titulo": "Attack on Titan: anime chega com impacto",
+    "descricao": "A primeira temporada do anime de AoT estreia no Japão causando um fenômeno global. A pergunta \"o que há dentro dos muros?\" tomou conta do mundo.",
+    "categoria": "Anime",
+    "imagem": "/wal_levi.png"
+  },
+  {
+    "id": "2014-07-07-mha-manga",
+    "mes": 7,
+    "dia": 7,
+    "ano": 2014,
+    "titulo": "My Hero Academia: plus ultra começa aqui",
+    "descricao": "O primeiro capítulo de Boku no Hero Academia, de Kōhei Horikoshi, é publicado na Weekly Shōnen Jump. Izuku Midoriya começa sua jornada para se tornar o maior herói.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2015-04-18-resf",
+    "mes": 4,
+    "dia": 18,
+    "ano": 2015,
+    "titulo": "O Renascimento de Freeza",
+    "descricao": "O filme chega aos cinemas trazendo a nova transformação Dourada do icônico vilão e a forma Super Saiyajin Blue pela primeira vez.",
+    "categoria": "Filme",
+    "imagem": "/wal_vegeta.png"
+  },
+  {
+    "id": "2015-06-20-dbs-manga",
+    "mes": 6,
+    "dia": 20,
+    "ano": 2015,
+    "titulo": "Dragon Ball Super começa no mangá",
+    "descricao": "O mangá de Dragon Ball Super começa a ser publicado na revista V-Jump, expandindo a história da série canônica pouco antes do anime estrear.",
+    "categoria": "Mangá",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "2015-07-05-super",
+    "mes": 7,
+    "dia": 5,
+    "ano": 2015,
+    "titulo": "Dragon Ball Super chega à TV",
+    "descricao": "A nova série canônica de Dragon Ball estreia, marcando o retorno definitivo da franquia em formato televisivo após décadas de espera.",
+    "categoria": "Anime",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "2015-10-05-opm-anime",
+    "mes": 10,
+    "dia": 5,
+    "ano": 2015,
+    "titulo": "One Punch Man anime: o herói por hobbie",
+    "descricao": "O anime de One Punch Man estreia e se torna viral pela desconstrução genial do gênero de super-heróis. Saitama e seus 100 flexões mudaram a internet.",
+    "categoria": "Anime",
+    "imagem": "/wal_saitama.png"
+  },
+  {
+    "id": "2016-02-15-kimetsu-manga",
+    "mes": 2,
+    "dia": 15,
+    "ano": 2016,
+    "titulo": "Kimetsu no Yaiba chega às bancas",
+    "descricao": "O primeiro capítulo de Demon Slayer: Kimetsu no Yaiba, de Koyoharu Gotouge, é publicado na Weekly Shōnen Jump. A jornada de Tanjiro começa.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2016-04-03-mha-anime",
+    "mes": 4,
+    "dia": 3,
+    "ano": 2016,
+    "titulo": "My Hero Academia anime estreia",
+    "descricao": "O anime de Boku no Hero Academia começa, apresentando Izuku Midoriya e o sonho de se tornar o maior herói do mundo mesmo sem poderes.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2017-03-23-shippuden-end",
+    "mes": 3,
+    "dia": 23,
+    "ano": 2017,
+    "titulo": "Naruto Shippuden termina após 15 anos",
+    "descricao": "O episódio final de Naruto Shippuden é transmitido, encerrando 15 anos de história. Naruto finalmente alcançou seu sonho de se tornar Hokage.",
+    "categoria": "Anime",
+    "imagem": "/wal_naruto.png"
+  },
+  {
+    "id": "2017-04-05-boruto-anime",
+    "mes": 4,
+    "dia": 5,
+    "ano": 2017,
+    "titulo": "Boruto começa — filhos de grandes ninjas",
+    "descricao": "O anime de Boruto: Naruto Next Generations estreia, dando continuidade ao legado de Konoha pela perspectiva do filho de Naruto.",
+    "categoria": "Anime",
+    "imagem": "/wal_naruto.png"
+  },
+  {
+    "id": "2018-01-26-fighterz",
+    "mes": 1,
+    "dia": 26,
+    "ano": 2018,
+    "titulo": "Dragon Ball FighterZ é lançado",
+    "descricao": "A Arc System Works lança o revolucionário jogo de luta 3v3 que dominou a FGC e ofereceu visuais idênticos ao anime. Um dos melhores jogos de luta já feitos.",
+    "categoria": "Games",
+    "imagem": "/wal_vegeta.png"
+  },
+  {
+    "id": "2018-12-14-broly",
+    "mes": 12,
+    "dia": 14,
+    "ano": 2018,
+    "titulo": "Estreia de Dragon Ball Super: Broly",
+    "descricao": "O aclamado filme reimagina a origem dos Saiyajins e canoniza Broly e Gogeta na cronologia principal com uma animação espetacular que redefiniu o padrão dos filmes DBZ.",
+    "categoria": "Filme",
+    "imagem": "/vegeta_family_warrior.png"
+  },
+  {
+    "id": "2019-04-06-demonslayer-anime",
+    "mes": 4,
+    "dia": 6,
+    "ano": 2019,
+    "titulo": "Demon Slayer: o caçador de demônios estreia",
+    "descricao": "O anime de Demon Slayer começa, apresentando Tanjiro Kamado e sua missão para salvar sua irmã Nezuko. O ufotable entregou uma animação que definiu uma nova era.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2020-05-18-kimetsu-end",
+    "mes": 5,
+    "dia": 18,
+    "ano": 2020,
+    "titulo": "Kimetsu no Yaiba encerra com emoção",
+    "descricao": "O capítulo final de Demon Slayer é publicado na Weekly Shōnen Jump, encerrando a saga de Tanjiro com um desfecho que emocionou milhões de fãs.",
+    "categoria": "Mangá",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2020-10-16-mugen-train",
+    "mes": 10,
+    "dia": 16,
+    "ano": 2020,
+    "titulo": "Mugen Train: o filme mais lucrativo do Japão",
+    "descricao": "Demon Slayer: Mugen Train estreia no Japão e bate todos os recordes de bilheteria, tornando-se o filme mais lucrativo da história japonesa com $400 milhões.",
+    "categoria": "Filme",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2021-01-04-onepiece-1000",
+    "mes": 1,
+    "dia": 4,
+    "ano": 2021,
+    "titulo": "One Piece capítulo 1000: Luffy chega ao topo",
+    "descricao": "O histórico capítulo 1000 de One Piece é publicado na Weekly Shōnen Jump. Um marco sem precedentes na indústria de mangás que levou 23 anos para ser alcançado.",
+    "categoria": "Mangá",
+    "imagem": "/wal_luffy.png"
+  },
+  {
+    "id": "2021-03-08-eva-final",
+    "mes": 3,
+    "dia": 8,
+    "ano": 2021,
+    "titulo": "Evangelion 3.0+1.0: o fim de 26 anos",
+    "descricao": "O filme final da saga Rebuild of Evangelion estreia no Japão, encerrando definitivamente a jornada de Shinji Ikari e oferecendo uma conclusão ao legado de Anno.",
+    "categoria": "Filme",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2021-04-09-aot-manga-end",
+    "mes": 4,
+    "dia": 9,
+    "ano": 2021,
+    "titulo": "Attack on Titan: o capítulo final divide o mundo",
+    "descricao": "O último capítulo do mangá de AoT é publicado. O desfecho escolhido por Isayama gerou o maior debate sobre finais na história recente dos animes.",
+    "categoria": "Mangá",
+    "imagem": "/wal_eren.png"
+  },
+  {
+    "id": "2022-06-11-super-hero",
+    "mes": 6,
+    "dia": 11,
+    "ano": 2022,
+    "titulo": "Lançamento de Dragon Ball Super: Super Hero",
+    "descricao": "O primeiro filme focado em Gohan e Piccolo, animado inteiramente em CGI, estreia no Japão trazendo as formas Beast e Orange Piccolo.",
+    "categoria": "Filme",
+    "imagem": "/gohan.webp"
+  },
+  {
+    "id": "2022-10-11-bleach-tybw",
+    "mes": 10,
+    "dia": 11,
+    "ano": 2022,
+    "titulo": "Bleach: Thousand-Year Blood War retorna",
+    "descricao": "Após 10 anos fora do ar, o anime de Bleach retorna com o arco final com animação de altíssimo nível, provando que a espera valeu a pena.",
+    "categoria": "Anime",
+    "imagem": "/collage.jpg"
+  },
+  {
+    "id": "2023-08-31-onepiece-netflix",
+    "mes": 8,
+    "dia": 31,
+    "ano": 2023,
+    "titulo": "One Piece Live Action: a maldição foi quebrada",
+    "descricao": "A série live-action de One Piece estreia na Netflix e quebra a maldição das adaptações de anime, sendo muito bem recebida por fãs e críticos.",
+    "categoria": "Série",
+    "imagem": "/wal_luffy.png"
+  },
+  {
+    "id": "2023-11-04-aot-final",
+    "mes": 11,
+    "dia": 4,
+    "ano": 2023,
+    "titulo": "O episódio final de Attack on Titan",
+    "descricao": "O último episódio de Shingeki no Kyojin é transmitido, encerrando uma das séries mais aclamadas e discutidas da história dos animes.",
+    "categoria": "Anime",
+    "imagem": "/wal_levi.png"
+  },
+  {
+    "id": "2024-03-08-akira-morte",
+    "mes": 3,
+    "dia": 8,
+    "ano": 2024,
+    "titulo": "Akira Toriyama nos deixa aos 68 anos",
+    "descricao": "Em 8 de março de 2024, o criador de Dragon Ball falece por hematoma subdural agudo. O mundo dos animes perdeu um de seus maiores gênios.",
+    "categoria": "História",
+    "imagem": "/wal_goku.png"
+  },
+  {
+    "id": "2024-10-11-sparking-zero",
+    "mes": 10,
+    "dia": 11,
+    "ano": 2024,
+    "titulo": "Lançamento de Dragon Ball: Sparking! ZERO",
+    "descricao": "A aguardada continuação da série Budokai Tenkaichi é lançada mundialmente, superando 3 milhões de vendas em 24 horas e se tornando o maior lançamento da franquia.",
+    "categoria": "Games",
+    "imagem": "/vegeta_family_warrior.png"
+  },
+  {
+    "id": "0000-05-09-gokuday",
+    "mes": 5,
+    "dia": 9,
+    "ano": 2015,
+    "titulo": "O Dia de Goku: celebração oficial no Japão",
+    "descricao": "9 de Maio é reconhecido oficialmente no Japão como Goku Day (Go=5, Ku=9), uma data para celebrar o personagem mais icônico dos animes.",
+    "categoria": "Comunidade",
+    "imagem": "/wal_goku.png"
+  }
+]
